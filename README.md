@@ -2,20 +2,7 @@
 
 Purchases and checkout starts, reported to the script the WordPress plugin loads.
 
-```
-sdk/woocommerce/skomi-woocommerce/     ← the plugin, zip this folder
-```
-
-Released from
-**[skomicom/skomi-plugin-woocommerce](https://github.com/skomicom/skomi-plugin-woocommerce)**
-as a zip attached to a release; `build/Plugins.targets` packs the correctly
-shaped one. Skomi.com no longer serves a download of its own.
-
-The zip, the folder inside it and the slug are all `skomi-woocommerce`, and
-GitHub's "Download ZIP" is not a substitute — it wraps everything in
-`<repo>-<branch>/`, which is the folder WordPress would install under.
-
-An add-on. It needs [`../wordpress`](../wordpress) — that plugin loads the
+An add-on. It needs [`https://github.com/skomicom/skomi-plugin-wordpress`](skomi-plugin-wordpress) — that plugin loads the
 bundle, this one calls `skomi.track()` on it — and it says so on the plugins
 screen if either that or WooCommerce is missing, rather than doing nothing
 quietly.
