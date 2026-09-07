@@ -1,0 +1,152 @@
+# Base .gitignore for the Skomi SDK and plugin repositories.
+#
+# ⚠ GIT DOES NOT READ THIS FILE WHERE IT SITS. A .gitignore is only read from
+# inside a repository's working tree, and this folder is not a repository — the
+# ten below each are. So this is a BASE to copy into each of them:
+#
+#   for d in */; do cp .gitignore "$d"; done
+#
+# Copying rather than sharing is also the right answer for public repositories:
+# the rules only reach a contributor who clones if they are committed in the
+# repository itself. (`git config core.excludesFile` would work on this machine
+# and nowhere else.)
+#
+# Derived from the monorepo's .gitignore with everything monorepo-shaped removed
+# — the `sdk/<name>/` path prefixes, the four ASP.NET hosts, the module drop
+# folder, the recordings folder, the generated stylesheets, the vendored skills.
+# What is left is the union of the ten ecosystems, and only rules that are safe
+# in ALL of them.
+
+# ---------------------------------------------------------------------------
+# FOUR THINGS THIS FILE DELIBERATELY DOES NOT IGNORE
+#
+# Each one is a file some template would swallow and every one of them is source
+# in at least one of these repositories.
+#
+#   *.csproj      skomi-sdk-dotnet ships Skomi.Sdk.csproj, and skomi-sdk-unity
+#                 ships Skomi.Sample.Core.csproj. The usual Unity template
+#                 ignores *.csproj because a Unity PROJECT generates them; a
+#                 Unity PACKAGE does not, and these are hand-written.
+#
+#   *.meta        Unity writes one beside every file and it carries the asset's
+#                 GUID. For a package consumed from git they MUST be committed,
+#                 or every clone regenerates them with new GUIDs and every
+#                 reference into the package breaks.
+#
+#   Samples~/     Unity's convention: the trailing tilde is what stops the
+#                 editor importing a sample until somebody asks for it. See the
+#                 negation beside `*~` below — a plain backup-file rule matches
+#                 the whole directory and `git status` says nothing at all.
+#
+#   *.lock files  package-lock.json and the sample's pubspec.lock are committed:
+#                 a sample somebody copies should install what it was verified
+#                 against. Only the Flutter PACKAGE's own lock is ignored, and
+#                 it is anchored to the repository root so it cannot reach the
+#                 sample beside it.
+# ---------------------------------------------------------------------------
+
+# --------------------------------------------------------------- the machine
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# --------------------------------------------------------------- the editors
+.vs/
+.idea/
+*.iml
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Editor backup files.
+#
+# ⚠ The negation is not optional. `*~` matches the DIRECTORY `Samples~`, and git
+# does not descend into an excluded directory — so without this the whole Unity
+# sample is invisible to `git status` and gets left out of the commit silently.
+# Un-ignoring the directory is what lets the files inside it be seen again.
+*~
+!Samples~/
+
+# ------------------------------------------------------------------ .NET
+[Bb]in/
+[Oo]bj/
+*.nupkg
+*.snupkg
+
+# ------------------------------------------------------------------ Node
+node_modules/
+dist/
+.build-test/
+*.tsbuildinfo
+npm-debug.log*
+
+# ------------------------------------------------- Gradle, Android, Kotlin
+.gradle/
+build/
+local.properties
+captures/
+.kotlin/
+
+# ⚠ NOT gradle/wrapper/gradle-wrapper.jar. It is a binary, it looks like build
+# output, and it is the one file without which `./gradlew` cannot bootstrap on a
+# fresh clone.
+
+# ------------------------------------------------------------ Flutter, Dart
+.dart_tool/
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+
+# The PACKAGE's lock file only — anchored to the repository root, so the sample
+# application's own lock beside it stays tracked. A library pins nothing for its
+# consumers; an application pins everything for itself.
+/pubspec.lock
+
+# The sample's generated platform folders. `flutter create .` writes them, and a
+# committed set pins the sample to one Flutter version.
+sample_todo/android/
+sample_todo/ios/
+sample_todo/linux/
+sample_todo/macos/
+sample_todo/windows/
+sample_todo/web/
+
+# -------------------------------------------------------- Swift, SwiftPM, Xcode
+.build/
+.swiftpm/
+DerivedData/
+Package.resolved
+*.xcodeproj/
+*.xcworkspace/
+xcuserdata/
+
+# ------------------------------------------------------------------ Unity
+#
+# A Unity PACKAGE repository has none of these itself — they appear the moment
+# somebody opens a consuming project in the same tree, which is exactly when
+# they would otherwise be committed by accident.
+#
+# See the header: *.meta and *.csproj are NOT here, on purpose.
+[Ll]ibrary/
+[Tt]emp/
+[Ll]ogs/
+[Uu]serSettings/
+[Mm]emoryCaptures/
+*.unitypackage
+*.apk
+*.aab
+
+# -------------------------------------------------------- PHP, WordPress
+vendor/
+
+# ⚠ The plugin zip is BUILD OUTPUT and belongs on a release, never in the tree.
+# A committed one is a second copy of the plugin that goes stale the first time
+# somebody edits the PHP — and a stale zip installs perfectly well, which is why
+# nothing would tell you.
+*.zip
+
+# --------------------------------------------------------------- everything
+*.log
+*.tmp
