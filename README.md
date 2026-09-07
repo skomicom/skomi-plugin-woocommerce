@@ -2,7 +2,7 @@
 
 Purchases and checkout starts, reported to the script the WordPress plugin loads.
 
-An add-on. It needs [`https://github.com/skomicom/skomi-plugin-wordpress`](skomi-plugin-wordpress) — that plugin loads the
+An add-on. It needs [`skomi-plugin-wordpress`](https://github.com/skomicom/skomi-plugin-wordpress) — that plugin loads the
 bundle, this one calls `skomi.track()` on it — and it says so on the plugins
 screen if either that or WooCommerce is missing, rather than doing nothing
 quietly.
