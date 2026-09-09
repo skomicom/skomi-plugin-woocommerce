@@ -2,13 +2,13 @@
 Contributors: skomi
 Tags: woocommerce, analytics, ecommerce, revenue, privacy
 Requires at least: 6.3
-Tested up to: 6.8
+Tested up to: 7.1
 Requires PHP: 7.4
 Requires Plugins: skomi-wordpress
 WC requires at least: 7.0
 Stable tag: 1.0.0
-License: GPLv2 or later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3 or later
+License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
 Reports WooCommerce purchases to Skomi with the order's own total, currency and number, so revenue is attributed to the visit that earned it.
 

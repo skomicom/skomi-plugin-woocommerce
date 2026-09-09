@@ -10,8 +10,8 @@
  * WC requires at least: 7.0
  * Author:            Skomi
  * Author URI:        https://skomi.com/
- * License:           GPL-2.0-or-later
- * License URI:       https://www.gnu.org/licenses/gpl-2.0.html
+ * License:           GPL-3.0-or-later
+ * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
  * Text Domain:       skomi-woocommerce
  *
  * An add-on to Skomi Analytics: that plugin loads the script, this one gives it
