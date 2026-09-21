@@ -4,7 +4,7 @@ Tags: woocommerce, analytics, ecommerce, revenue, privacy
 Requires at least: 6.3
 Tested up to: 7.1
 Requires PHP: 7.4
-Requires Plugins: skomi-wordpress
+Requires Plugins: skomi-analytics
 WC requires at least: 7.0
 Stable tag: 1.0.0
 License: GPLv3 or later

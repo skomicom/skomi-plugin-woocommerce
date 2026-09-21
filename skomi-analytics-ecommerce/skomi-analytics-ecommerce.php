@@ -6,13 +6,13 @@
  * Version:           1.0.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
- * Requires Plugins:  skomi-wordpress
+ * Requires Plugins:  skomi-analytics
  * WC requires at least: 7.0
  * Author:            Skomi
  * Author URI:        https://skomi.com/
  * License:           GPL-3.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       skomi-woocommerce
+ * Text Domain:       skomi-analytics-ecommerce
  *
  * An add-on to Skomi Analytics: that plugin loads the script, this one gives it
  * the two events a shop actually needs.
@@ -54,9 +54,9 @@ add_action(
  * answers them.
  */
 function skomi_wc_ready() {
-	return function_exists( 'skomi_wordpress_should_track' )
+	return function_exists( 'skomi_analytics_should_track' )
 		&& function_exists( 'WC' )
-		&& skomi_wordpress_should_track();
+		&& skomi_analytics_should_track();
 }
 
 /** Tell an administrator why nothing is happening, rather than failing quietly. */
@@ -65,11 +65,11 @@ function skomi_wc_admin_notice() {
 		return;
 	}
 
-	if ( ! function_exists( 'skomi_wordpress_should_track' ) ) {
+	if ( ! function_exists( 'skomi_analytics_should_track' ) ) {
 		echo '<div class="notice notice-warning"><p>';
 		esc_html_e(
 			'Skomi for WooCommerce needs the Skomi Analytics plugin, which loads the script it reports to.',
-			'skomi-woocommerce'
+			'skomi-analytics-ecommerce'
 		);
 		echo '</p></div>';
 
@@ -78,7 +78,7 @@ function skomi_wc_admin_notice() {
 
 	if ( ! function_exists( 'WC' ) ) {
 		echo '<div class="notice notice-warning"><p>';
-		esc_html_e( 'Skomi for WooCommerce needs WooCommerce.', 'skomi-woocommerce' );
+		esc_html_e( 'Skomi for WooCommerce needs WooCommerce.', 'skomi-analytics-ecommerce' );
 		echo '</p></div>';
 	}
 }
