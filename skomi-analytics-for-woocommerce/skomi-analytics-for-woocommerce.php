@@ -6,7 +6,7 @@
  * Version:           1.0.0
  * Requires at least: 6.3
  * Requires PHP:      7.4
- * Requires Plugins:  skomi-analytics
+ * Requires Plugins:  skomi-analytics, woocommerce
  * WC requires at least: 7.0
  * Author:            Skomi
  * Author URI:        https://skomi.com/
@@ -59,7 +59,14 @@ function skomi_wc_ready() {
 		&& skomi_analytics_should_track();
 }
 
-/** Tell an administrator why nothing is happening, rather than failing quietly. */
+/**
+ * Tell an administrator why nothing is happening, rather than failing quietly.
+ *
+ * Both dependencies are ALSO declared in the Requires Plugins header, and from
+ * WordPress 6.5 that header stops this plugin being activated without them. The
+ * notice stays for 6.3 and 6.4, which this plugin supports and which ignore the
+ * header entirely - there, nothing else would say why no purchase is recorded.
+ */
 function skomi_wc_admin_notice() {
 	if ( ! current_user_can( 'activate_plugins' ) ) {
 		return;
