@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name:       Skomi for WooCommerce
+ * Plugin Name:       Skomi Analytics for WooCommerce
  * Plugin URI:        https://skomi.com/docs/installing-on-wordpress
  * Description:       Reports WooCommerce purchases to Skomi, with the order's own total, currency and number — so revenue is attributed to the visit that earned it.
  * Version:           1.0.0
@@ -12,7 +12,7 @@
  * Author URI:        https://skomi.com/
  * License:           GPL-3.0-or-later
  * License URI:       https://www.gnu.org/licenses/gpl-3.0.html
- * Text Domain:       skomi-analytics-ecommerce
+ * Text Domain:       skomi-analytics-for-woocommerce
  *
  * An add-on to Skomi Analytics: that plugin loads the script, this one gives it
  * the two events a shop actually needs.
@@ -68,8 +68,8 @@ function skomi_wc_admin_notice() {
 	if ( ! function_exists( 'skomi_analytics_should_track' ) ) {
 		echo '<div class="notice notice-warning"><p>';
 		esc_html_e(
-			'Skomi for WooCommerce needs the Skomi Analytics plugin, which loads the script it reports to.',
-			'skomi-analytics-ecommerce'
+			'Skomi Analytics for WooCommerce needs the Skomi Analytics plugin, which loads the script it reports to.',
+			'skomi-analytics-for-woocommerce'
 		);
 		echo '</p></div>';
 
@@ -78,7 +78,7 @@ function skomi_wc_admin_notice() {
 
 	if ( ! function_exists( 'WC' ) ) {
 		echo '<div class="notice notice-warning"><p>';
-		esc_html_e( 'Skomi for WooCommerce needs WooCommerce.', 'skomi-analytics-ecommerce' );
+		esc_html_e( 'Skomi Analytics for WooCommerce needs WooCommerce.', 'skomi-analytics-for-woocommerce' );
 		echo '</p></div>';
 	}
 }

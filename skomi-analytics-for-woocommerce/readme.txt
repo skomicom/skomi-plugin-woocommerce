@@ -1,4 +1,4 @@
-=== Skomi for WooCommerce ===
+=== Skomi Analytics for WooCommerce ===
 Contributors: skomi
 Tags: woocommerce, analytics, ecommerce, revenue, privacy
 Requires at least: 6.3

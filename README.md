@@ -1,4 +1,4 @@
-# Skomi for WooCommerce
+# Skomi Analytics for WooCommerce
 
 Purchases and checkout starts, reported to the script the WordPress plugin loads.
 
